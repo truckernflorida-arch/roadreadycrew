@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0d1420"/>
+      <stop offset=".38" stop-color="#2a2433"/>
+      <stop offset=".58" stop-color="#8a3d1f"/>
+      <stop offset=".68" stop-color="#ff8a2a"/>
+      <stop offset=".72" stop-color="#ffc35a"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="1150" cy="640" r="420" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff2c4" stop-opacity="1"/>
+      <stop offset=".08" stop-color="#ffd27a" stop-opacity=".95"/>
+      <stop offset=".35" stop-color="#ff8a2a" stop-opacity=".45"/>
+      <stop offset="1" stop-color="#ff8a2a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1c1714"/>
+      <stop offset="1" stop-color="#07080a"/>
+    </linearGradient>
+    <linearGradient id="road" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3a3430"/>
+      <stop offset="1" stop-color="#121315"/>
+    </linearGradient>
+    <linearGradient id="beam" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0" stop-color="#fff3c8" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#fff3c8" stop-opacity="0"/>
+    </linearGradient>
+  <filter id="blur" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="14"/></filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#sky)"/>
+  <rect width="1600" height="900" fill="url(#sun)"/>
+  <circle cx="1120" cy="536" r="40" fill="#ffe7a8"/>
+  <!-- distant ridges -->
+  <path d="M0 610 L120 585 L260 600 L400 570 L560 596 L700 575 L860 598 L1000 580 L1180 600 L1320 574 L1460 592 L1600 578 V660 H0Z" fill="#4a2a22" opacity=".75"/>
+  <path d="M0 630 L180 612 L340 628 L520 606 L700 626 L900 610 L1080 630 L1260 612 L1440 628 L1600 616 V660 H0Z" fill="#2a1d1a"/>
+  <rect y="648" width="1600" height="252" fill="url(#ground)"/>
+  <!-- road in perspective -->
+  <path d="M770 648 L830 648 L1600 900 L-60 900 Z" fill="url(#road)"/>
+  <path d="M770 648 L700 900" stroke="#d8cbb8" stroke-opacity=".35" stroke-width="3"/>
+  <path d="M830 648 L1320 900" stroke="#d8cbb8" stroke-opacity=".35" stroke-width="3"/>
+  <g fill="#ffc21a">
+    <path d="M799 652 L801 652 L802 662 L798 662Z" opacity=".7"/>
+    <path d="M797 674 L803 674 L805 692 L795 692Z" opacity=".8"/>
+    <path d="M794 712 L806 712 L809 742 L791 742Z" opacity=".9"/>
+    <path d="M789 776 L811 776 L816 826 L784 826Z"/>
+    <path d="M781 870 L819 870 L826 900 L774 900Z"/>
+  </g>
+  <rect y="636" width="1600" height="14" fill="#16120f"/>
+  <rect y="636" width="1600" height="1.5" fill="#ffb060" opacity=".35"/>
+  <!-- semi-truck silhouette, facing left, on the horizon road -->
+  <g transform="translate(905 524) scale(.62)">
+    <path d="M14 140 L-520 110 L-520 230 L14 158 Z" fill="url(#beam)" filter="url(#blur)"/>
+    <g fill="#0a0b0d">
+      <path d="M20 170 L20 116 Q20 104 32 102 L72 98 L88 44 Q91 36 100 36 L152 36 L152 170 Z"/>
+      <rect x="150" y="26" width="70" height="144" rx="6"/>
+      <rect x="156" y="-14" width="8" height="52" rx="3"/>
+      <rect x="230" y="14" width="500" height="150" rx="3"/>
+      <rect x="14" y="164" width="720" height="16"/>
+      <circle cx="58" cy="186" r="22"/><circle cx="180" cy="186" r="22"/><circle cx="228" cy="186" r="22"/>
+      <circle cx="628" cy="186" r="22"/><circle cx="676" cy="186" r="22"/>
+    </g>
+    <path d="M92 52 L148 52 L148 96 L80 96 Z" fill="#ffb347" opacity=".45"/>
+    <rect x="12" y="140" width="12" height="10" rx="2" fill="#fff6d6"/>
+    <g fill="#ffb020"><rect x="250" y="10" width="10" height="5"/><rect x="480" y="10" width="10" height="5"/><rect x="700" y="10" width="10" height="5"/></g>
+    <rect x="232" y="16" width="496" height="3" fill="#ff9a3c" opacity=".55"/>
+  </g>
+  <!-- poles -->
+  <g stroke="#0b0b0c" stroke-width="4"><path d="M1380 660 V520 M1360 528 H1400"/><path d="M1500 680 V470 M1474 480 H1526"/></g>
+  <path d="M1380 528 Q1440 545 1500 482" stroke="#0b0b0c" stroke-width="1.5" fill="none"/>
+</svg>

@@ -1,0 +1,13 @@
+# Cloudflare Pages headers (ignored by GitHub Pages)
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+/img/*
+  Cache-Control: public, max-age=604800
+/functions/*
+  X-Robots-Tag: noindex
+/schema.sql
+  X-Robots-Tag: noindex
