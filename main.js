@@ -4,6 +4,7 @@
   document.documentElement.classList.remove("no-js");
 
   var CONTACT_EMAIL = "hello@roadreadycrew.com";
+  var FORM_ENDPOINT = "https://formsubmit.co/ajax/" + CONTACT_EMAIL;
   var CONTACT_PHONE = ""; // TODO: put the Google Voice number here, e.g. "(321) 555-0123"
 
   /* ---------- Mobile nav ---------- */
@@ -58,7 +59,7 @@
     return data;
   }
   function summary(data, labels) {
-    return Object.keys(data).filter(function (k) { return k !== "company_website" && k !== "form" && data[k] !== ""; }).map(function (k) {
+    return Object.keys(data).filter(function (k) { return k !== "_honey" && k !== "form" && k.charAt(0) !== "_" && data[k] !== ""; }).map(function (k) {
       var v = Array.isArray(data[k]) ? data[k].join(", ") : data[k];
       return (labels[k] || k) + ": " + v;
     }).join("\n");
@@ -83,11 +84,12 @@
       headers: { "Content-Type": "application/json", "Accept": "application/json" },
       body: JSON.stringify(body),
       signal: ctrl ? ctrl.signal : undefined
-    }).then(function (r) { clearTimeout(t); if (!r.ok) throw new Error("HTTP " + r.status); return r; },
+    }).then(function (r) { clearTimeout(t); if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then(function (j) { if (!j || String(j.success) !== "true") throw new Error((j && j.message) || "Form service error"); return j; },
             function (e) { clearTimeout(t); throw e; });
   }
 
-  /* ---------- Forms: POST JSON to /api/*, friendly fallback if the endpoint isn't live yet ---------- */
+  /* ---------- Forms: POST JSON to FormSubmit.co AJAX, friendly fallback if the endpoint isn't live yet ---------- */
   document.querySelectorAll("form[data-rrc-form]").forEach(function (form) {
     var notice = document.getElementById(form.getAttribute("data-notice"));
     var submit = form.querySelector('[type="submit"]');
@@ -112,7 +114,7 @@
       form.classList.add("was-validated");
       if (!form.checkValidity()) { form.reportValidity(); return; }
       var data = formToObject(form);
-      if (data.company_website) return; // honeypot: bots fill hidden field
+      if (data._honey) return; // honeypot: bots fill hidden field
       data.submitted_at = new Date().toISOString();
       data.page = location.pathname;
       if (submit) { submit.disabled = true; submit.textContent = "Sending…"; }
@@ -141,7 +143,16 @@
         notice.focus({ preventScroll: true });
         notice.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
       };
-      post(form.getAttribute("action"), data).then(function () { after(true); }, function () { after(false); });
+      var payload = {};
+      Object.keys(data).forEach(function (k) { payload[k] = Array.isArray(data[k]) ? data[k].join(", ") : data[k]; });
+      payload._subject = data.form === "carrier"
+        ? "New carrier lead: " + (data.company_name || "")
+        : "New driver lead: " + (data.full_name || "") + " " + (data.phone || "");
+      payload._template = "table";
+      payload._captcha = "false";
+      payload._honey = "";
+      if (data.email) payload._replyto = data.email;
+      post(FORM_ENDPOINT, payload).then(function () { after(true); }, function () { after(false); });
     });
   });
 
