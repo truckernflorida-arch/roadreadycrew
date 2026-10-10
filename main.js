@@ -37,6 +37,8 @@
 
   /* ---------- Referral code from URL (?ref=) ---------- */
   var params = new URLSearchParams(location.search);
+  var job = (params.get("job") || "").replace(/[^a-zA-Z0-9_-]/g, "").slice(0, 60);
+  if (job) document.querySelectorAll('input[name="job"]').forEach(function (i) { i.value = job; });
   var ref = (params.get("ref") || "").replace(/[^a-zA-Z0-9_-]/g, "").slice(0, 40);
   if (ref) {
     document.querySelectorAll('input[name="referral_code"]').forEach(function (i) { i.value = ref; });
@@ -65,7 +67,7 @@
     }).join("\n");
   }
   function labelMap(form) {
-    var map = { referral_code: "Referral code", submitted_at: "Submitted", page: "Page" };
+    var map = { referral_code: "Referral code", job: "Job applied for", submitted_at: "Submitted", page: "Page" };
     form.querySelectorAll("[name]").forEach(function (el) {
       if (map[el.name] || el.type === "hidden") return;
       var fs = el.closest("fieldset");
