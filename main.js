@@ -204,4 +204,22 @@
     calc.addEventListener("submit", function (e) { e.preventDefault(); run(); });
     run();
   }
+
+  /* ---------- Share buttons ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll(".share-btn"), function (b) {
+    var status = b.parentNode.querySelector(".share-status");
+    var say = function (t) { if (status) { status.textContent = t; setTimeout(function () { status.textContent = ""; }, 2500); } };
+    b.addEventListener("click", function () {
+      var url = b.getAttribute("data-share-url") || location.href, title = b.getAttribute("data-share-title") || document.title;
+      if (navigator.share) { navigator.share({ title: title, text: "CDL-A job via Road Ready Crew", url: url }).catch(function () {}); return; }
+      var fallback = function () {
+        var t = document.createElement("textarea"); t.value = url; t.setAttribute("readonly", ""); t.style.position = "absolute"; t.style.left = "-9999px";
+        document.body.appendChild(t); t.select();
+        try { document.execCommand("copy"); say("Link copied!"); } catch (e) { say(url); }
+        document.body.removeChild(t);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(function () { say("Link copied!"); }, fallback);
+      else fallback();
+    });
+  });
 })();

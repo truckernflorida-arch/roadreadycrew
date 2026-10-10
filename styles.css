@@ -280,3 +280,15 @@ input[type=checkbox],input[type=radio]{width:22px;height:22px;accent-color:var(-
   linear-gradient(90deg,rgba(8,9,11,.95) 0%,rgba(8,9,11,.86) 42%,rgba(8,9,11,.4) 80%,rgba(8,9,11,.25) 100%),
   linear-gradient(0deg,rgba(15,17,20,1) 0%,rgba(15,17,20,0) 30%)}
 @media (max-width:700px){.hero-sub::after{background:linear-gradient(180deg,rgba(8,9,11,.25) 0,rgba(8,9,11,0) 90px,rgba(15,17,20,.8) 170px,#0f1114 220px,#0f1114 100%)}}
+/* Share + article prose */
+.share-box{margin:0 0 2rem}
+.tool .share-box{margin:1rem 0 0}
+.share-status{margin-left:.6rem;color:var(--yellow);font-weight:700}
+.share-links{margin:.5rem 0 0;color:var(--muted,#aab)}
+.share-links a{color:var(--yellow);text-decoration:underline;padding:.25rem 0;display:inline-block}
+.prose article h1{font-size:clamp(2rem,6vw,3.2rem);line-height:1.05;margin:.3rem 0 1.2rem}
+.prose article h2{margin-top:2rem}
+.prose article p,.prose article li{line-height:1.65}
+.prose article ul,.prose article ol{padding-left:1.3rem;margin:0 0 1rem}
+.prose article li{margin:.4rem 0}
+.prose article a{color:var(--yellow)}
