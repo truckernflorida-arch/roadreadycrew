@@ -19,6 +19,26 @@
 <meta property="og:image" content="https://roadreadycrew.com/img/og.png">
 <meta name="twitter:card" content="summary_large_image">
 <script defer src="../main.js"></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Home",
+   "item": "https://roadreadycrew.com/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "Driver Tips & Guides",
+   "item": "https://roadreadycrew.com/articles/"
+  }
+ ]
+}
+</script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -64,7 +84,8 @@
 <section class="hero hero-sub" aria-labelledby="t-title">
   <div class="hero-media" role="img" aria-label="A semi-truck on the highway" style="--img:url('../img/driver.webp');--fallback:url('../img/driver-fallback.svg')"></div>
   <div class="wrap"><div class="hero-inner">
-    <p class="eyebrow rise">From truckers, for truckers</p>
+    <nav aria-label="Breadcrumb" class="eyebrow rise"><a href="../">Home</a> &rsaquo; <span aria-current="page">Driver Tips &amp; Guides</span></nav>
+    <p class="eyebrow">From truckers, for truckers</p>
     <h1 id="t-title" class="rise d1" style="font-size:clamp(2.6rem,8vw,4.8rem)">Driver Tips <span class="accent-y">&amp; Guides</span></h1>
     <p class="lead rise d2">Straight answers on pay, lease deals and finding the right seat.</p>
   </div></div>
