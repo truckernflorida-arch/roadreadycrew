@@ -62,7 +62,7 @@ p{margin:0 0 1em}
 @media (max-width:400px){.brand{font-size:1.3rem}}
 .nav.open{display:flex;flex-direction:column;position:absolute;left:0;right:0;top:100%;background:#0d0f12;border-bottom:1px solid var(--line);padding:.5rem 1.25rem 1.25rem}
 .nav.open a{padding:.9rem .25rem;border-bottom:1px solid rgba(255,255,255,.06);font-size:1.3rem}
-@media (min-width:960px){
+@media (min-width:1200px){
   .menu-btn{display:none}
   .nav,.nav.open{display:flex;flex-direction:row;position:static;background:none;border:0;padding:0;gap:.15rem}
   .nav.open a{border:0;padding:.6rem .7rem;font-size:1.12rem}
