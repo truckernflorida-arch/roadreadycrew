@@ -292,3 +292,11 @@ input[type=checkbox],input[type=radio]{width:22px;height:22px;accent-color:var(-
 .prose article ul,.prose article ol{padding-left:1.3rem;margin:0 0 1rem}
 .prose article li{margin:.4rem 0}
 .prose article a{color:var(--yellow)}
+
+.prose article .table-wrap{overflow-x:auto;margin:0 0 1.25rem;-webkit-overflow-scrolling:touch}
+.prose article table{width:100%;border-collapse:collapse;font-size:.95rem;margin:0}
+.prose article caption{caption-side:bottom;text-align:left;color:var(--muted);font-size:.85rem;padding:.6rem 0 0}
+.prose article th,.prose article td{text-align:left;vertical-align:top;padding:.7rem .8rem;border-bottom:1px solid var(--line)}
+.prose article thead th{background:var(--panel);color:var(--yellow);font-family:var(--head);font-weight:800;letter-spacing:.04em;text-transform:uppercase;font-size:1rem}
+.prose article tbody th{font-weight:700;color:var(--text);white-space:nowrap}
+.prose article tbody tr:nth-child(even){background:var(--charcoal)}
